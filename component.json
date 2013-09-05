@@ -4,8 +4,14 @@
   "description": "",
   "version": "0.0.1",
   "keywords": [],
-  "dependencies": {},
-  "development": {},
+  "dependencies": {
+    "bredele/data-binding": "*"
+  },
+  "development": {
+    "component/assert": "*",
+    "bredele/widget": "*",
+    "bredele/store": "*"
+  },
   "license": "MIT",
   "main": "index.js",
   "scripts": [

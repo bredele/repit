@@ -43,6 +43,7 @@ Plugin.prototype.each = function(node) {
   this.store.on('change', function(key, value){
     var item = _this.items[key];
     if(item) {
+      //NOTe: should we unbind in store when we reset?
       _this.items[key].reset(value); //do our own emitter to have scope
     } else {
       //create item renderer
@@ -103,8 +104,8 @@ function ItemRenderer(node, data){
  */
 
 ItemRenderer.prototype.unbind = function(node) {
-  //remove all listener and delete data on store
-  //+
+  //NOTE: is there something else to do to clean the memory?
+  this.store.off();
   node.removeChild(this.dom);
 };
 

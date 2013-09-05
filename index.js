@@ -51,9 +51,7 @@ Plugin.prototype.each = function(node) {
   });
 
   this.store.on('deleted', function(key){
-    var item = _this.items.splice(key, key)[0]; //remove from array...is there a better way?
-    item.unbind(node);
-    item = null; //for garbage collection
+    _this.delItem(key);
   });
 
   //NOTE: might be in store (store.loop)
@@ -72,6 +70,12 @@ Plugin.prototype.addItem = function(data) {
   var item = new ItemRenderer(this.clone, data);
   this.items.push(item);
   this.node.appendChild(item.dom);
+};
+
+Plugin.prototype.delItem = function(idx) {
+    var item = this.items.splice(idx, idx)[0]; //remove from array...is there a better way?
+    item.unbind(this.node);
+    item = null; //for garbage collection
 };
 
 

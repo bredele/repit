@@ -1,0 +1,32 @@
+{
+  "name": "each-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bredele/each-plugin.git"
+  },
+  "keywords": [
+    "mvc",
+    "template",
+    "iteration",
+    "each",
+    "list",
+    "template",
+    "store"
+  ],
+  "author": "Olivier Wietrich",
+  "license": "BSD",
+  "readmeFilename": "Readme.md",
+  "gitHead": "7a41a55839c2624101fe19c781a17bb0b9bf2251",
+  "bugs": {
+    "url": "https://github.com/bredele/each-plugin/issues"
+  }
+}

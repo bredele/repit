@@ -17,7 +17,7 @@ module.exports = Plugin;
 
 function Plugin(store){
   this.store = store;
-  this.items = [];
+  this.items = {};
 }
 
 
@@ -43,11 +43,11 @@ Plugin.prototype.each = function(node) {
   this.store.on('change', function(key, value){
     var item = _this.items[key];
     if(item) {
-      //NOTe: should we unbind in store when we reset?
-      _this.items[key].reset(value); //do our own emitter to have scope
+      //NOTE: should we unbind in store when we reset?
+      item.reset(value); //do our own emitter to have scope
     } else {
       //create item renderer
-      _this.addItem(value);
+      _this.addItem(key, value);
     }
   });
 
@@ -57,7 +57,7 @@ Plugin.prototype.each = function(node) {
 
   //NOTE: might be in store (store.loop)
   for(var i = 0, l = data.length; i < l; i++){
-    this.addItem(data[i]);
+    this.addItem(i, data[i]);
   }
 };
 
@@ -67,15 +67,16 @@ Plugin.prototype.each = function(node) {
  * @api private
  */
 
-Plugin.prototype.addItem = function(data) {
+Plugin.prototype.addItem = function(key, data) {
   var item = new ItemRenderer(this.clone, data);
-  this.items.push(item);
+  this.items[key] = item;
   this.node.appendChild(item.dom);
 };
 
 Plugin.prototype.delItem = function(idx) {
-    var item = this.items.splice(idx, idx)[0]; //remove from array...is there a better way?
+    var item = this.items[idx];
     item.unbind(this.node);
+    delete this.items[idx];
     item = null; //for garbage collection
 };
 

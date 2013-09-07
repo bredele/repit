@@ -32,6 +32,11 @@ describe('initialization', function(){
 
     it('should update items with data', function(){
       assert('olivier' === nodes[0].innerHTML);
+
+      store.on('change', function(key, val, prev){
+        console.log(key, val, prev);
+      });
+      
       store.set(0, {
         name:'bredele'
       });

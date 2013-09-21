@@ -1,11 +1,10 @@
-
 # each-plugin
 
   
 
 ## Installation
 
-    $ component install bredele/each-plugin
+    $ component install leafs/each-plugin
 
 ## API
 

@@ -43,6 +43,14 @@ view:
   view.reset([{attr:'bredele'},{attr:'Calgary'}]);
 ```
    
+Here's the result:
+
+```html
+  <ul class="list">
+    <li>bredele</li>
+    <li>Calgary</li>    
+  </ul>
+```
 
 ## License
 

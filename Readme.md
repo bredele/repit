@@ -10,13 +10,16 @@
 ## Usage
 
 template:
+
 ```html
   <ul data-list="each:">
     <li>{attr}</li>
   </ul>
 ```
-
+  > the li is repeated for each item into the store
+  
 view:
+
 ```js
   var Store = require('store');
   var EachPlugin = require('plugin');

@@ -16,8 +16,8 @@ template:
     <li>{attr}</li>
   </ul>
 ```
-  > the li is repeated for each item into the store
-  
+  > the 'li' is repeated for each item into the store
+
 view:
 
 ```js
@@ -29,6 +29,9 @@ view:
   ...
   //use leafs/view component
   view.add('list', new EachPlugin(store));
+
+  ...
+  //make the view alive and reset your store to update the view
 ```
    
 

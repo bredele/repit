@@ -7,9 +7,9 @@
 
     $ component install leafs/each-plugin
 
-## Usage
+## Example
 
-The following example use the component [view](https://github.com/leafs/view) and [store](https://github.com/leafs/store).
+The following example use the components [view](https://github.com/leafs/view) and [store](https://github.com/leafs/store).
 
 template:
 

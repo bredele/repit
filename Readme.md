@@ -9,10 +9,12 @@
 
 ## Usage
 
+The following example use the component [view](https://github.com/leafs/view) and [store](https://github.com/leafs/store).
+
 template:
 
 ```html
-  <ul data-list="each:">
+  <ul class="list" data-list="each:">
     <li>{attr}</li>
   </ul>
 ```
@@ -22,16 +24,21 @@ view:
 
 ```js
   var Store = require('store');
+  var View = require('view');
   var EachPlugin = require('plugin');
-  ...
+
   //store has to be array-like
   var store = new Store([{attr:'leafs'}]);
-  ...
+
+  var view = new View();
+  view.template(document.querySelector('.list'));
+  
   //use leafs/view component
   view.add('list', new EachPlugin(store));
+  view.alive();
 
-  ...
-  //make the view alive and reset your store to update the view
+  //update your view
+  view.reset([{attr:'bredele'},{attr:'Calgary'}]);
 ```
    
 

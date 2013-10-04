@@ -9,12 +9,14 @@
 
 ## Usage
 
+template:
 ```html
   <ul data-list="each:">
     <li>{attr}</li>
   </ul>
 ```
 
+view:
 ```js
   var Store = require('store');
   var EachPlugin = require('plugin');

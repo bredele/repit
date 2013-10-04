@@ -10,7 +10,7 @@
   },
   "development": {
     "component/assert": "*",
-    "leafs/widget": "*"
+    "leafs/view": "*"
   },
   "license": "MIT",
   "main": "index.js",

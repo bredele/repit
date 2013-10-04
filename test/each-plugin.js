@@ -1,6 +1,6 @@
 var assert = require('assert');
 var Plugin = require('each-plugin');
-var Widget = require('widget');
+var Widget = require('view');
 var Store = require('store');
 
 
@@ -27,7 +27,7 @@ describe('initialization', function(){
     it('should apply substitution binding on each new item', function(){
       assert('olivier' === nodes[0].innerHTML);
       assert('bruno' === nodes[1].innerHTML);
-      assert('sebastien' === nodes[2].innerHTML);     
+      assert('sebastien' === nodes[2].innerHTML);  
     });
 
     it('should update items with data', function(){

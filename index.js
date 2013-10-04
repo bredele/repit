@@ -30,7 +30,7 @@ function Plugin(store){
 
 Plugin.prototype.each = function(node) {
   var data = this.store.data;
-  var first = node.firstChild;
+  var first = node.children[0];
   var _this = this;
   this.node = node;
   //NOTE: may be instead that get the string of node and pass to the renderer

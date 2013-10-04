@@ -1,13 +1,30 @@
 # each-plugin
 
-  
+  Loop over the items of an array store and append bound instances of that element. 
+
 
 ## Installation
 
     $ component install leafs/each-plugin
 
-## API
+## Usage
 
+```html
+  <ul data-list="each:">
+    <li>{attr}</li>
+  </ul>
+```
+
+```js
+  var Store = require('store');
+  var EachPlugin = require('plugin');
+  ...
+  //store has to be array-like
+  var store = new Store([{attr:'leafs'}]);
+  ...
+  //use leafs/view component
+  view.add('list', new EachPlugin(store));
+```
    
 
 ## License

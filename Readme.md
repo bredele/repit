@@ -33,8 +33,10 @@ view:
   var view = new View();
   view.template(document.querySelector('.list'));
   
-  //use leafs/view component
+  //name your plugin
   view.add('list', new EachPlugin(store));
+
+  //apply bindings
   view.alive();
 
   //update your view

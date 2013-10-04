@@ -25,7 +25,7 @@ view:
 ```js
   var Store = require('store');
   var View = require('view');
-  var EachPlugin = require('plugin');
+  var EachPlugin = require('each-plugin');
 
   //store has to be array-like
   var store = new Store([{attr:'leafs'}]);

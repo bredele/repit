@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/leafs/each-plugin.git"
+    "url": "git://github.com/bredele/each-plugin.git"
   },
   "keywords": [
     "mvc",
@@ -27,6 +27,6 @@
   "readmeFilename": "Readme.md",
   "gitHead": "7a41a55839c2624101fe19c781a17bb0b9bf2251",
   "bugs": {
-    "url": "https://github.com/leafs/each-plugin/issues"
+    "url": "https://github.com/bredele/each-plugin/issues"
   }
 }

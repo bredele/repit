@@ -1,16 +1,16 @@
 {
   "name": "each-plugin",
-  "repo": "leafs/each-plugin",
+  "repo": "bredele/each-plugin",
   "description": "",
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "leafs/data-binding": "*",
-    "leafs/store": "*"
+    "bredele/data-binding": "*",
+    "bredele/store": "*"
   },
   "development": {
     "component/assert": "*",
-    "leafs/view": "*"
+    "bredele/view": "*"
   },
   "license": "MIT",
   "main": "index.js",

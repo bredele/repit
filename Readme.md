@@ -5,7 +5,7 @@
 
 ## Installation
 
-    $ component install leafs/each-plugin
+    $ component install bredele/each-plugin
 
 ## Example
 

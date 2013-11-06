@@ -34,7 +34,7 @@ view:
   view.template(document.querySelector('.list'));
   
   //name your plugin
-  view.add('list', new EachPlugin(store));
+  view.data('list', new EachPlugin(store));
 
   //apply bindings
   view.alive();

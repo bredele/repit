@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Each plugin</title>
+</head>
+<body>
+	<ul data-list="each:">
+		<li>
+			<a href="{href}">{label}</a>
+		</li>
+	</ul>
+	<script src="../build/build.js"></script>
+	<script>
+	  var View = require('view'),
+	  		Store = require('store'),
+	  		ListPlugin = require('each-plugin');
+
+	  var view = new View();
+	  var store = new Store([{
+	  	label: 'github',
+	  	href: 'http://github.com/bredele'
+	  }, {
+	  	label: 'perso',
+	  	href: 'http://bredele.github.io'
+	  }
+	  ]);
+	  view.plugin('list', new ListPlugin(store));
+	  view.alive(document.querySelector('ul'));
+	</script>
+</body>
+</html>

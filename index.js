@@ -28,6 +28,7 @@ function Plugin(store){
  * @api public
  */
 
+Plugin.prototype.default =  
 Plugin.prototype.each = function(node) {
   var data = this.store.data;
   var first = node.children[0];
@@ -61,6 +62,7 @@ Plugin.prototype.each = function(node) {
   }
 };
 
+
 /**
  * Create item renderer from data.
  * @param  {Object} data 
@@ -72,6 +74,7 @@ Plugin.prototype.addItem = function(key, data) {
   this.items[key] = item;
   this.node.appendChild(item.dom);
 };
+
 
 Plugin.prototype.delItem = function(idx) {
     var item = this.items[idx];

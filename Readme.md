@@ -14,7 +14,7 @@ The following example use the components [view](https://github.com/leafs/view) a
 template:
 
 ```html
-  <ul class="list" data-list="each:">
+  <ul class="list" data-list="each">
     <li>{attr}</li>
   </ul>
 ```

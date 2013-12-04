@@ -14,8 +14,8 @@ describe('initialization', function(){
       widget = new Widget();
       store = new Store([{name:'olivier'}, {name:'bruno'}, {name:'sebastien'}]);
       //TODO:bug if you don't declare ':' becaseu of split of undefined
-      widget.template('<ul data-model="each:"><li>{name}</li></ul>', store);
-      widget.plugin('model', new Plugin(store));
+      widget.html('<ul data-model="each:"><li>{name}</li></ul>', store);
+      widget.data('model', new Plugin(store));
       widget.alive();
       nodes = widget.dom.childNodes;
     });

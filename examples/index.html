@@ -5,8 +5,8 @@
 	<title>Each plugin</title>
 </head>
 <body>
-	<input type="range" min="1" max="500" value="1">
-	<ul data-list>
+	<input type="range" min="1" max="10" value="1">
+	<ul list>
 		<li>
 			<a href="{href}/{label}">{label}</a>
 		</li>
@@ -27,7 +27,8 @@
 	  	href: 'http://bredele.github.io'
 	  }
 	  ]);
-	  view.plugin('list', new ListPlugin(store));
+	  var plug = new ListPlugin(store);
+	  view.attr('list', plug);
 	  view.alive(document.querySelector('ul'));
 
 	  var input = document.querySelector('input');

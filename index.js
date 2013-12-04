@@ -17,7 +17,7 @@ module.exports = Plugin;
 
 function Plugin(store){
   this.store = store;
-  this.items = {};
+  this.items = [];
 }
 
 
@@ -52,8 +52,8 @@ Plugin.prototype.each = function(node) {
     }
   });
 
-  this.store.on('deleted', function(key){
-    _this.delItem(key);
+  this.store.on('deleted', function(key, idx){
+    _this.delItem(idx);
   });
 
   //NOTE: might be in store (store.loop)
@@ -79,7 +79,8 @@ Plugin.prototype.addItem = function(key, data) {
 Plugin.prototype.delItem = function(idx) {
     var item = this.items[idx];
     item.unbind(this.node);
-    delete this.items[idx];
+    //delete this.items[idx];
+    this.items.splice(idx, 1);
     item = null; //for garbage collection
 };
 

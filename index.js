@@ -81,7 +81,7 @@ List.prototype.indexOf = function(node) {
 
 List.prototype.del = function(arg) {
   //we should optimize store reset
-  if(arg === undefined) this.store.reset([]); 
+  if(arg === undefined) return this.store.reset([]);
   this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
 };
 

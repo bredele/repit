@@ -5,10 +5,11 @@
 	<title>Each plugin</title>
 </head>
 <body>
-	<input type="range" min="1" max="500" value="1">
+	<input type="range" min="1" max="100" value="2">
+	<button>Remove all</button>
 	<ul list>
 		<li>
-			<a href="{href}/{label}">{label}</a>
+			<span>{label}</span>
 		</li>
 	</ul>
 	<script src="../build/build.js"></script>
@@ -18,7 +19,9 @@
 	  		ListPlugin = require('each-plugin');
 
 	  var view = new View();
-	  var index = 2;
+	  var list = document.querySelector('ul');
+	  var input = document.querySelector('input');
+
 	  var store = new Store([{
 	  	label: 'github',
 	  	href: 'http://github.com/bredele'
@@ -27,12 +30,17 @@
 	  	href: 'http://bredele.github.io'
 	  }
 	  ]);
-	  var plug = new ListPlugin(store);
-	  view.attr('list', plug);
-	  view.alive(document.querySelector('ul'));
 
-	  var input = document.querySelector('input');
-	  input.addEventListener('change', function(){
+    var plug =  new ListPlugin(store);
+	  view.attr('list', plug);
+	  view.alive(list);
+
+
+	  list.addEventListener('click', function(ev){
+	  	plug.del(ev.target.parentElement);
+	  });
+
+	  input.addEventListener('change', function() {
 	  	var val = input.value;
 	  	var reset = [];
 	  	for(var l = val; l--;) {
@@ -43,12 +51,11 @@
 	  	}
 	  	store.reset(reset);
 	  });
-	  // setInterval(function(){
-	  // 	store.set(index, {
-	  // 		label : 'index' + index
-	  // 	});
-	  // 	++index;
-	  // }, 100);
+
+    document.querySelector('button').addEventListener('click', function(){
+    	plug.del();
+    });
+
 	</script>
 </body>
 </html>

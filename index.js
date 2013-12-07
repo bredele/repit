@@ -5,41 +5,41 @@ var Binding = require('binding'),
 
 
 /**
- * Expose 'event-plugin'
+ * Expose 'List'
  */
 
-module.exports = Plugin;
+module.exports = List;
 
 
 /**
- * Plugin constructor.
- * @param {Object} model (should have getter/setter and inherit from emitter)
+ * List constructor.
+ * 
+ * @param {HTMLelement} el
+ * @param {Object} model
  * @api public
  */
 
-function Plugin(store){
+function List(store){
   this.store = store;
   this.items = [];
 }
 
 
 /**
- * Each util.
- * Iterate through store.
+ * Bind HTML element with store.
+ * Takes the first child as an item renderer.
+ * 
  * @param  {HTMLElement} node 
  * @api public
  */
 
-Plugin.prototype.default =  
-Plugin.prototype.each = function(node) {
-  var data = this.store.data;
-  var first = node.children[0];
-  var _this = this;
-  this.node = node;
-  //NOTE: may be instead that get the string of node and pass to the renderer
-  //do benchmark
-  this.clone = first.cloneNode(true);
+List.prototype.default =  
+List.prototype.list = function(node) {
+  var first = node.children[0],
+      _this = this;
 
+  this.node = node;
+  this.clone = first.cloneNode(true);
   node.removeChild(first);
 
 
@@ -58,10 +58,31 @@ Plugin.prototype.each = function(node) {
     _this.delItem(idx);
   });
 
-  //NOTE: might be in store (store.loop)
-  for(var i = 0, l = data.length; i < l; i++){
-    this.addItem(i, data[i]);
-  }
+  this.store.loop(this.addItem, this);
+};
+
+/**
+ * Return index of node in list.
+ * @param  {HTMLelement} node 
+ * @return {Number}  
+ */
+
+List.prototype.indexOf = function(node) {
+  var children = [].slice.call(this.node.children);
+  return index(children, node);
+};
+
+
+/**
+ * Delete item(s) in list.
+ * 
+ * @api public
+ */
+
+List.prototype.del = function(arg) {
+  //we should optimize store reset
+  if(arg === undefined) this.store.reset([]); 
+  this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
 };
 
 
@@ -71,7 +92,7 @@ Plugin.prototype.each = function(node) {
  * @api private
  */
 
-Plugin.prototype.addItem = function(key, data) {
+List.prototype.addItem = function(key, data) {
   var item = new ItemRenderer(this.clone, data);
   this.items[key] = item;
   this.node.appendChild(item.dom);
@@ -84,26 +105,13 @@ Plugin.prototype.addItem = function(key, data) {
  * @api private
  */
 
-Plugin.prototype.delItem = function(idx) {
+List.prototype.delItem = function(idx) {
     var item = this.items[idx];
     item.unbind(this.node);
-    //delete this.items[idx];
     this.items.splice(idx, 1);
     item = null; //for garbage collection
 };
 
-
-/**
- * Return index of node in list.
- * @param  {HTMLelement} node 
- * @return {Number}  
- */
-
-Plugin.prototype.indexOf = function(node) {
-  //works if we use plugin only once (this.node could be in constructor)
-  var children = [].slice.call(this.node.children);
-  return index(children, node);
-};
 
 /**
  * Item renderer.

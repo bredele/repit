@@ -100,7 +100,7 @@ List.prototype.loop = function(cb, scope) {
  */
 
 List.prototype.set = function(idx, obj) {
-  if(node instanceof HTMLElement) idx = this.indexOf(idx);
+  if(idx instanceof HTMLElement) idx = this.indexOf(idx);
   var item = this.items[idx].store;
   each(obj, function(key, val){
     item.set(key, val);

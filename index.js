@@ -13,12 +13,18 @@ module.exports = List;
 
 /**
  * List constructor.
+ * @param {HTMLelement} el
  * @param {Object} model
  * @api public
  */
 
-function List(store){
-  this.store = store;
+function List(el, store){
+  if(el instanceof HTMLElement) {
+    this.node = el;
+    this.store = store;
+  } else {
+    this.store = el;
+  }
   this.items = [];
 }
 

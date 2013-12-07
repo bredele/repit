@@ -5,7 +5,8 @@
 	<title>Each plugin</title>
 </head>
 <body>
-	<input type="range" min="1" max="200" value="1">
+	<input type="range" min="1" max="100" value="2">
+	<button>Remove all</button>
 	<ul list>
 		<li>
 			<span>{label}</span>
@@ -51,6 +52,9 @@
 	  	store.reset(reset);
 	  });
 
+    document.querySelector('button').addEventListener('click', function(){
+    	plug.del();
+    });
 
 	</script>
 </body>

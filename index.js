@@ -76,6 +76,12 @@ Plugin.prototype.addItem = function(key, data) {
 };
 
 
+/**
+ * Delete item.
+ * @param  {Number} idx index
+ * @api private
+ */
+
 Plugin.prototype.delItem = function(idx) {
     var item = this.items[idx];
     item.unbind(this.node);
@@ -84,6 +90,18 @@ Plugin.prototype.delItem = function(idx) {
     item = null; //for garbage collection
 };
 
+
+/**
+ * Return index of node in list.
+ * @param  {HTMLelement} node 
+ * @return {Number}  
+ */
+
+Plugin.prototype.indexOf = function(node) {
+  //works if we use plugin only once (this.node could be in constructor)
+  var children = [].slice.call(this.node.children);
+  return children.indexOf(this.node); //use index component
+};
 
 /**
  * Item renderer.

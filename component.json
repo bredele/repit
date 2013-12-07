@@ -6,7 +6,8 @@
   "keywords": [],
   "dependencies": {
     "bredele/binding": "*",
-    "bredele/store": "*"
+    "bredele/store": "*",
+    "component/indexof" : "*"
   },
   "development": {
     "component/assert": "*",

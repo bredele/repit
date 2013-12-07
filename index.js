@@ -1,5 +1,7 @@
-var Binding = require('binding');
-var Store = require('store');
+var Binding = require('binding'),
+    Store = require('store'),
+    index = require('indexof');
+
 
 
 /**
@@ -100,7 +102,7 @@ Plugin.prototype.delItem = function(idx) {
 Plugin.prototype.indexOf = function(node) {
   //works if we use plugin only once (this.node could be in constructor)
   var children = [].slice.call(this.node.children);
-  return children.indexOf(this.node); //use index component
+  return index(childre, this.node);
 };
 
 /**

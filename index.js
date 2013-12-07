@@ -102,7 +102,7 @@ Plugin.prototype.delItem = function(idx) {
 Plugin.prototype.indexOf = function(node) {
   //works if we use plugin only once (this.node could be in constructor)
   var children = [].slice.call(this.node.children);
-  return index(children, this.node);
+  return index(children, node);
 };
 
 /**

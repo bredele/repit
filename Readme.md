@@ -1,20 +1,21 @@
-# each-plugin
+# List
 
-  Loop over the items of an array store and append bound instances of that element. 
+  Loop over the items of an array store and append bound instances of that element. List is
+  also a plugin for the [binding](https://github.com/bredele/binding) component.
 
 
 ## Installation
 
-    $ component install bredele/each-plugin
+    $ component install bredele/list
 
-## Example
+## Plugin usage
 
-The following example use the components [view](https://github.com/leafs/view) and [store](https://github.com/leafs/store).
+The following example use the components [view](https://github.com/bredele/view) and [store](https://github.com/bredele/store).
 
 template:
 
 ```html
-  <ul class="list" data-list="each">
+  <ul class="list" list>
     <li>{attr}</li>
   </ul>
 ```
@@ -25,28 +26,28 @@ view:
 ```js
   var Store = require('store');
   var View = require('view');
-  var EachPlugin = require('each-plugin');
+  var List = require('list');
 
   //store has to be array-like
-  var store = new Store([{attr:'leafs'}]);
+  var store = new Store([{attr:'olivier'}]);
 
   var view = new View();
-  view.template(document.querySelector('.list'));
+  view.html(document.querySelector('.list'));
   
   //name your plugin
-  view.data('list', new EachPlugin(store));
+  view.attr('list', new List(store));
 
   //apply bindings
   view.alive();
 
-  //update your view
-  view.reset([{attr:'bredele'},{attr:'Calgary'}]);
+  //update your store
+  store.reset([{attr:'bredele'},{attr:'Calgary'}]);
 ```
    
 Here's the result:
 
 ```html
-  <ul class="list">
+  <ul class="list" list>
     <li>bredele</li>
     <li>Calgary</li>    
   </ul>

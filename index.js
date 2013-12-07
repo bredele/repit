@@ -13,6 +13,7 @@ module.exports = List;
 
 /**
  * List constructor.
+ * 
  * @param {HTMLelement} el
  * @param {Object} model
  * @api public
@@ -25,22 +26,20 @@ function List(store){
 
 
 /**
- * Each util.
- * Iterate through store.
+ * Bind HTML element with store.
+ * Takes the first child as an item renderer.
+ * 
  * @param  {HTMLElement} node 
  * @api public
  */
 
 List.prototype.default =  
 List.prototype.list = function(node) {
-  var data = this.store.data;
-  var first = node.children[0];
-  var _this = this;
-  this.node = node;
-  //NOTE: may be instead that get the string of node and pass to the renderer
-  //do benchmark
-  this.clone = first.cloneNode(true);
+  var first = node.children[0],
+      _this = this;
 
+  this.node = node;
+  this.clone = first.cloneNode(true);
   node.removeChild(first);
 
 
@@ -59,10 +58,35 @@ List.prototype.list = function(node) {
     _this.delItem(idx);
   });
 
-  //NOTE: might be in store (store.loop)
-  for(var i = 0, l = data.length; i < l; i++){
-    this.addItem(i, data[i]);
+  store.loop(this.addItem, this);
+};
+
+/**
+ * Return index of node in list.
+ * @param  {HTMLelement} node 
+ * @return {Number}  
+ */
+
+List.prototype.indexOf = function(node) {
+  //works if we use plugin only once (this.node could be in constructor)
+  var children = [].slice.call(this.node.children);
+  return index(children, node);
+};
+
+
+/**
+ * Delete item in list.
+ *
+ * 
+ * @api public
+ */
+List.prototype.del = function(arg) {
+  if(arg === undefined) {
+    this.store.loop(function(idx){
+      this.del(idx);
+    });
   }
+  this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
 };
 
 
@@ -88,23 +112,10 @@ List.prototype.addItem = function(key, data) {
 List.prototype.delItem = function(idx) {
     var item = this.items[idx];
     item.unbind(this.node);
-    //delete this.items[idx];
     this.items.splice(idx, 1);
     item = null; //for garbage collection
 };
 
-
-/**
- * Return index of node in list.
- * @param  {HTMLelement} node 
- * @return {Number}  
- */
-
-List.prototype.indexOf = function(node) {
-  //works if we use plugin only once (this.node could be in constructor)
-  var children = [].slice.call(this.node.children);
-  return index(children, node);
-};
 
 /**
  * Item renderer.

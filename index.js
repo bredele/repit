@@ -18,13 +18,8 @@ module.exports = List;
  * @api public
  */
 
-function List(el, store){
-  if(el instanceof HTMLElement) {
-    this.node = el;
-    this.store = store;
-  } else {
-    this.store = el;
-  }
+function List(store){
+  this.store = store;
   this.items = [];
 }
 
@@ -37,7 +32,7 @@ function List(el, store){
  */
 
 List.prototype.default =  
-List.prototype.each = function(node) {
+List.prototype.list = function(node) {
   var data = this.store.data;
   var first = node.children[0];
   var _this = this;

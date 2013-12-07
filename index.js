@@ -5,7 +5,7 @@ var Binding = require('binding'),
 
 
 /**
- * Expose 'event-plugin'
+ * Expose 'List'
  */
 
 module.exports = List;

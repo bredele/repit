@@ -58,7 +58,7 @@ List.prototype.list = function(node) {
     _this.delItem(idx);
   });
 
-  store.loop(this.addItem, this);
+  this.store.loop(this.addItem, this);
 };
 
 /**

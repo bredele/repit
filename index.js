@@ -68,20 +68,24 @@ List.prototype.list = function(node) {
  */
 
 List.prototype.indexOf = function(node) {
-  //works if we use plugin only once (this.node could be in constructor)
   var children = [].slice.call(this.node.children);
   return index(children, node);
 };
 
 
 /**
- * Delete item in list.
- *
+ * Delete item(s) in list.
  * 
  * @api public
  */
+
 List.prototype.del = function(arg) {
-  if(arg === undefined) this.reset([]);
+  if(arg === undefined) {
+    //should we use reset?
+    this.store.loop(function(idx){
+      this.del(idx);
+    });
+  }
   this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
 };
 

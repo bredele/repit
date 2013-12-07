@@ -81,11 +81,7 @@ List.prototype.indexOf = function(node) {
  * @api public
  */
 List.prototype.del = function(arg) {
-  if(arg === undefined) {
-    this.store.loop(function(idx){
-      this.del(idx);
-    });
-  }
+  if(arg === undefined) this.reset([]);
   this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
 };
 

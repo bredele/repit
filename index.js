@@ -79,9 +79,18 @@ List.prototype.indexOf = function(node) {
  * @api public
  */
 
-List.prototype.del = function(arg) {
+List.prototype.del = function(arg, scope) {
   //we should optimize store reset
   if(arg === undefined) return this.store.reset([]);
+  if(typeof arg === 'function') {
+    //could we handle that with inverse loop and store loop?
+    var l = this.store.data.length;
+    while(l--) {
+      if(arg.call(scope, this.items[l].store)){
+        this.store.del(l);
+      }
+    }
+  }
   this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
 };
 

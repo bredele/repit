@@ -6,7 +6,8 @@
 </head>
 <body>
 	<input type="range" min="1" max="100" value="2">
-	<button>Remove all</button>
+	<button class="remove">Remove all</button>
+	<button class="remove-pair">Remove pair items</button>
 	<ul list>
 		<li>
 			<span>{label}</span>
@@ -52,8 +53,14 @@
 	  	store.reset(reset);
 	  });
 
-    document.querySelector('button').addEventListener('click', function(){
+    document.querySelector('.remove').addEventListener('click', function(){
     	plug.del();
+    });
+
+     document.querySelector('.remove-pair').addEventListener('click', function(){
+    	plug.del(function(item){
+    		return Number(item.get('label').substring(5)) % 2 === 0;
+    	});
     });
 
 	</script>

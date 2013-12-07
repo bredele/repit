@@ -92,6 +92,23 @@ List.prototype.loop = function(cb, scope) {
 
 
 /**
+ * Set list item.
+ * 
+ * @param {HTMLElement|Number} idx 
+ * @param {Object} obj
+ * @api public
+ */
+
+List.prototype.set = function(idx, obj) {
+  if(node instanceof HTMLElement) idx = this.indexOf(idx);
+  var item = this.items[idx].store;
+  each(obj, function(key, val){
+    item.set(key, val);
+  });
+};
+
+
+/**
  * Delete item(s) in list.
  * 
  * @api public

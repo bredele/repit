@@ -21,7 +21,7 @@ module.exports = List;
  */
 
 function List(store){
-  this.store = store;
+  this.store = new Store(store);
   this.items = [];
 }
 

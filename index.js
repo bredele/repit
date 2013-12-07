@@ -99,6 +99,7 @@ List.prototype.loop = function(cb, scope) {
  */
 
 List.prototype.add = function(obj) {
+  //store push?
   //in the future, we could use a position
   this.store.set(this.store.data.length, obj);
 };

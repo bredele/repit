@@ -8,16 +8,16 @@ var Binding = require('binding'),
  * Expose 'event-plugin'
  */
 
-module.exports = Plugin;
+module.exports = List;
 
 
 /**
- * Plugin constructor.
- * @param {Object} model (should have getter/setter and inherit from emitter)
+ * List constructor.
+ * @param {Object} model
  * @api public
  */
 
-function Plugin(store){
+function List(store){
   this.store = store;
   this.items = [];
 }
@@ -30,8 +30,8 @@ function Plugin(store){
  * @api public
  */
 
-Plugin.prototype.default =  
-Plugin.prototype.each = function(node) {
+List.prototype.default =  
+List.prototype.each = function(node) {
   var data = this.store.data;
   var first = node.children[0];
   var _this = this;
@@ -71,7 +71,7 @@ Plugin.prototype.each = function(node) {
  * @api private
  */
 
-Plugin.prototype.addItem = function(key, data) {
+List.prototype.addItem = function(key, data) {
   var item = new ItemRenderer(this.clone, data);
   this.items[key] = item;
   this.node.appendChild(item.dom);
@@ -84,7 +84,7 @@ Plugin.prototype.addItem = function(key, data) {
  * @api private
  */
 
-Plugin.prototype.delItem = function(idx) {
+List.prototype.delItem = function(idx) {
     var item = this.items[idx];
     item.unbind(this.node);
     //delete this.items[idx];
@@ -99,7 +99,7 @@ Plugin.prototype.delItem = function(idx) {
  * @return {Number}  
  */
 
-Plugin.prototype.indexOf = function(node) {
+List.prototype.indexOf = function(node) {
   //works if we use plugin only once (this.node could be in constructor)
   var children = [].slice.call(this.node.children);
   return index(children, node);

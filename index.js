@@ -1,5 +1,6 @@
 var Binding = require('binding'),
     Store = require('store'),
+    each = require('each'),
     index = require('indexof');
 
 
@@ -65,11 +66,28 @@ List.prototype.list = function(node) {
  * Return index of node in list.
  * @param  {HTMLelement} node 
  * @return {Number}  
+ * @api public
  */
 
 List.prototype.indexOf = function(node) {
   var children = [].slice.call(this.node.children);
   return index(children, node);
+};
+
+
+/**
+ * Loop over the list items.
+ * Execute callback and pass store item.
+ * 
+ * @param  {Function} cb    
+ * @param  {Object}   scope 
+ * @api public
+ */
+
+List.prototype.loop = function(cb, scope) {
+  each(this.items, function(idx, item){
+    cb.call(scope, item.store);
+  });
 };
 
 

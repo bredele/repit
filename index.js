@@ -34,7 +34,7 @@ function List(store){
  * @api public
  */
 
-List.prototype.default =  
+List.prototype.main =  
 List.prototype.list = function(node) {
   var first = node.children[0],
       _this = this;

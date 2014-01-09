@@ -53,6 +53,12 @@
 	  	store.reset(reset);
 	  });
 
+	  store.reset([{
+	  	label: 'index0'
+	  }, {
+	  	label: 'index1'
+	  }]);
+
     document.querySelector('.remove').addEventListener('click', function(){
     	plug.del();
     });

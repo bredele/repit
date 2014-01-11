@@ -70,8 +70,7 @@ List.prototype.list = function(node) {
  */
 
 List.prototype.indexOf = function(node) {
-  var children = [].slice.call(this.node.children);
-  return index(children, node);
+  return index(this.node.children, node);
 };
 
 

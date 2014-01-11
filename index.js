@@ -114,7 +114,8 @@ List.prototype.add = function(obj) {
  */
 
 List.prototype.set = function(idx, obj) {
-  if(idx instanceof HTMLElement) idx = this.indexOf(idx);
+  if(idx instanceof Element) idx = this.indexOf(idx);  
+  // if(idx instanceof HTMLElement) idx = this.indexOf(idx);
   var item = this.items[idx].store;
   each(obj, function(key, val){
     item.set(key, val);
@@ -140,7 +141,10 @@ List.prototype.del = function(arg, scope) {
       }
     }
   }
-  this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
+
+  //ie8 doesn't support HTMLElement and instanceof with left assignment != object
+  this.store.del(typeof arg === 'number' ? arg : this.indexOf(arg));
+  //this.store.del(arg instanceof HTMLElement ? this.indexOf(arg): arg);
 };
 
 

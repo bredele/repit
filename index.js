@@ -1,4 +1,4 @@
-var Binding = require('binding'),
+var binding = require('binding'),
     Store = require('store'),
     each = require('each'),
     index = require('indexof');
@@ -21,7 +21,10 @@ module.exports = List;
  */
 
 function List(store){
-  this.store = new Store(store);
+  if(!(this instanceof List)) return new List(store);
+  //TODO: should mixin store
+  // this.store = new Store(store);
+  this.store = store;
   this.items = [];
 }
 
@@ -186,8 +189,8 @@ function ItemRenderer(node, data){
   //NOTE: is it more perfomant to work with string?
   this.dom = node.cloneNode(true);
   this.store = new Store(data);
-  this.binding = new Binding(this.store); //we have to have a boolean parameter to apply interpolation &|| plugins
-  this.binding.apply(this.dom);
+  this.binding = binding(this.store); //we have to have a boolean parameter to apply interpolation &|| plugins
+  this.binding.scan(this.dom);
 }
 
 

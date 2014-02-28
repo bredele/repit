@@ -1,57 +1,58 @@
-# List
+# Repeat
 
-  Loop over the items of an array store and append bound instances of that element. List is
-  also a plugin for the [binding](https://github.com/bredele/binding) component.
+  Loop over the items of an array store and append bound instances of that element.
+  `Repeat` is also a plugin for [lego](https://github.com/bredele/lego).
 
 
 ## Installation
 
-    $ component install bredele/list
+with [component](http://github.com/component/component):
 
-## Plugin usage
+    $ component install bredele/repeat-bricks
 
-The following example use the components [view](https://github.com/bredele/view) and [store](https://github.com/bredele/store).
+with [nodejs](http://nodejs.org):
 
-template:
+    $ npm install repeat-bricks
 
-```html
-  <ul class="list" list>
-    <li>{attr}</li>
-  </ul>
-```
-  > the 'li' is repeated for each item into the store
+## Usage
 
-view:
+First, add the plugin to your view (see [lego](https://github.com/bredele/lego) to know more about views):
 
 ```js
-  var Store = require('store');
-  var View = require('view');
-  var List = require('list');
+  var repeat = require('repeat-bricks');
 
-  //store has to be array-like
-  var store = new Store([{attr:'olivier'}]);
-
-  var view = new View();
-  view.html(document.querySelector('.list'));
-  
-  //name your plugin
-  view.attr('list', new List(store));
-
-  //apply bindings
-  view.alive();
-
-  //update your store
-  store.reset([{attr:'bredele'},{attr:'Calgary'}]);
+  view.add('repeat', repeat(view));
 ```
    
-Here's the result:
+### Basic
 
 ```html
-  <ul class="list" list>
+  <ul repeat>
+    <li>{{ attr }}</li>
+  </ul>
+```
+  > the 'li' is repeated for each item into the store (view is a store)
+
+update the store :
+
+```js
+view.reset([{
+  attr: 'bredele',
+}, {
+  attr: 'Calgary'
+}])
+```
+   
+and here's the result:
+
+```html
+  <ul list>
     <li>bredele</li>
     <li>Calgary</li>    
   </ul>
 ```
+
+See [example](https://github.com/bredele/repeat-brick/tree/master/examples).
 
 ## License
 

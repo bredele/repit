@@ -1,6 +1,6 @@
 {
-  "name": "list",
-  "repo": "bredele/list",
+  "name": "repeat-brick",
+  "repo": "bredele/repeat-brick",
   "description": "",
   "version": "0.0.1",
   "keywords": [],
@@ -12,7 +12,8 @@
   },
   "development": {
     "component/assert": "*",
-    "bredele/view": "*"
+    "bredele/lego": "*",
+    "bredele/events-brick" : "*"
   },
   "license": "MIT",
   "main": "index.js",

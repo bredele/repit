@@ -8,18 +8,18 @@
 
 with [component](http://github.com/component/component):
 
-    $ component install bredele/repeat-bricks
+    $ component install bredele/repeat-brick
 
 with [nodejs](http://nodejs.org):
 
-    $ npm install repeat-bricks
+    $ npm install repeat-brick
 
 ## Usage
 
 First, add the plugin to your view (see [lego](https://github.com/bredele/lego) to know more about views):
 
 ```js
-  var repeat = require('repeat-bricks');
+  var repeat = require('repeat-brick');
 
   view.add('repeat', repeat(view));
 ```

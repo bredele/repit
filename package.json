@@ -1,32 +1,40 @@
 {
-  "name": "list",
-  "version": "0.0.0",
-  "description": "",
+  "name": "repeat-brick",
+  "version": "0.0.1",
+  "description": "Lego plugin to Instantiate a DOM element once per item into a Store ",
   "main": "index.js",
   "directories": {
+    "example": "examples",
     "test": "test"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bredele/list.git"
+    "url": "git://github.com/bredele/repeat-brick.git"
   },
   "keywords": [
-    "mvc",
-    "template",
-    "iteration",
+    "repeat",
     "each",
-    "list",
-    "template",
+    "plugin",
+    "lego",
     "store"
   ],
-  "author": "Olivier Wietrich",
-  "license": "BSD",
-  "readmeFilename": "Readme.md",
-  "gitHead": "7a41a55839c2624101fe19c781a17bb0b9bf2251",
+  "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bredele/list/issues"
+    "url": "https://github.com/bredele/repeat-brick/issues"
+  },
+  "browser": {
+    "store": "store-component",
+    "binding": "data-binding",
+    "each": "each-bredele"
+  },
+  "dependencies": {
+    "store-component": "~0.1.2",
+    "each-bredele": "0.0.1",
+    "indexof": "0.0.1",
+    "data-binding": "0.0.0"
   }
 }

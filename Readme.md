@@ -1,7 +1,7 @@
 # Repeat
 
   Loop over the items of an array store and append bound instances of that element.
-  `Repeat` is also a plugin for [lego](https://github.com/bredele/lego).
+  `Repeat` is also a plugin for [brick](https://github.com/bredele/brick).
 
 
 ## Installation
@@ -16,7 +16,7 @@ with [nodejs](http://nodejs.org):
 
 ## Usage
 
-First, add the plugin to your view (see [lego](https://github.com/bredele/lego) to know more about views):
+First, add the plugin to your view (see [brick](https://github.com/bredele/brick) to know more about views):
 
 ```js
   var repeat = require('repeat-brick');

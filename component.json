@@ -12,7 +12,7 @@
   },
   "development": {
     "component/assert": "*",
-    "bredele/lego": "*",
+    "bredele/brick": "*",
     "bredele/events-brick" : "*"
   },
   "license": "MIT",

@@ -1,7 +1,7 @@
 {
   "name": "repeat-brick",
   "version": "0.0.1",
-  "description": "Lego plugin to Instantiate a DOM element once per item into a Store ",
+  "description": "Brick plugin to Instantiate a DOM element once per item into a Store ",
   "main": "index.js",
   "directories": {
     "example": "examples",
@@ -18,7 +18,7 @@
     "repeat",
     "each",
     "plugin",
-    "lego",
+    "brick",
     "store"
   ],
   "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",

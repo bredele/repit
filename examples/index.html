@@ -18,17 +18,17 @@
 	<script>
 		//repeat
 		
-	  var lego = require('lego'),
+	  var brick = require('brick'),
 	  		repeat = require('repeat-brick'),
 	  		list = document.querySelector('ul');
 
 
-    var view = lego(list, [{
+    var view = brick(list, [{
     	label: 'bredele',
     	href: 'http://github.com/bredele'
     }, {
-    	label: 'lego',
-    	href: 'http://github.com/bredele/lego'
+    	label: 'brick',
+    	href: 'http://github.com/bredele/brick'
     }]);
 
     var plug =  repeat(view);
@@ -39,7 +39,7 @@
 	  //widget
 	  var events = require('events-brick');
 	  		
-	  lego(document.body).add('data-event', events({
+	  brick(document.body).add('data-event', events({
 	  	delItem: function(target) {
 	  		plug.del(target.parentElement);
 	  	},

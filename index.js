@@ -9,33 +9,11 @@ var each = require('looping');
 var index = require('indexof');
 
 
-
 /**
  * Expose 'Repit'
  */
 
-module.exports = function(data) {
-
-  if(data && data.mount) {
-
-    // note: do better
-    data.repeat = function(node, data) {
-      var list = new Repit(new Store(data) || data.sandbox);
-      list.list(node);
-    };
-  }
-
-  // brick plugin 
-  return function(ctx) {
-    var list = new Repit(data || ctx);
-    ctx.add('repeat', function(node) {
-      // :s
-      list.list(node);
-    });
-    return list;
-  };
-
-};
+module.exports = Repit;
 
 
 /**
@@ -46,11 +24,31 @@ module.exports = function(data) {
  * @api public
  */
 
-function Repit(store){
-  if(!(this instanceof Repit)) return new Repit(store);
+function Repit(data){
+  //NOTE: there is some cleaning to do
+  if(!(this instanceof Repit)) {
+    if(data && data.mount) {
+
+      // note: do better
+      data.repeat = function(node, data) {
+        var list = new Repit(new Store(data) || data.sandbox);
+        list.list(node);
+      };
+    }
+
+    // brick plugin 
+    return function(ctx) {
+      var list = new Repit(data || ctx);
+      ctx.add('repeat', function(node) {
+        // :s
+        list.list(node);
+      });
+      return list;
+    };
+  }
   //TODO: should mixin store
   // this.store = new Store(store);
-  this.store = store;
+  this.store = data;
   this.items = [];
 }
 
@@ -142,8 +140,7 @@ Repit.prototype.add = function(obj) {
  */
 
 Repit.prototype.set = function(idx, obj) {
-  if(idx instanceof Element) idx = this.indexOf(idx);  
-  // if(idx instanceof HTMLElement) idx = this.indexOf(idx);
+  if(idx instanceof Element) idx = this.indexOf(idx);
   var item = this.items[idx].store;
   each(obj, function(key, val){
     item.set(key, val);

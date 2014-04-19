@@ -1,5 +1,7 @@
 # Repit
 
+ > **rep**eat **it**
+ 
   Loop over the items of an array store and append bound instances of that element.
 
 

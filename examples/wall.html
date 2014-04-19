@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Repit wall</title>
+</head>
+<body>
+	<ul class="list" repeat>
+		<li> {{ label }} </li>
+	</ul>
+	<script src="../build/build.js"></script>
+	<script>
+	  var wall = require('wall');
+	  var Store = require('datastore');
+	  var repeat = require('repit');
+	  var el = document.querySelector('.list');
+	  var data = new Store([{
+	  	label: 'bredele'
+	  }, {
+	  	label: 'github'
+	  }]);
+
+	  var app = wall();
+	  app.use(repeat);
+
+	  app.repeat(el, data);
+
+
+	  var index = 2;
+	  setInterval(function() {
+	  	data.set(index++, {
+	  		label: 'buddy' + index
+	  	});
+
+	  	if(index === 10) {
+	  		data.reset([]);
+	  		index = 0;
+	  	}
+	  }, 8);
+
+	</script>
+</body>
+</html>

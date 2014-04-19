@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Repit standalone</title>
+</head>
+<body>
+	<ul class="list">
+		<li> {{ label }} </li>
+	</ul>
+	<script src="../build/build.js"></script>
+	<script>
+	  var Repeat = require('repit');
+	  var Store = require('datastore');
+	  var ul = document.querySelector('.list');
+
+	  var store = new Store([{
+	  	label: 'bredele'
+	  }, {
+	  	label: 'github'
+	  }]);
+
+
+	  var list = new Repeat(store);
+	  list.list(ul);
+
+	  var index = 2;
+	  setInterval(function() {
+	  	store.set(index++, {
+	  		label: 'buddy' + index
+	  	});
+
+	  	if(index === 50) {
+	  		store.reset([]);
+	  		index = 0;
+	  	}
+	  }, 10);
+
+	</script>
+</body>
+</html>

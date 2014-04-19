@@ -2,18 +2,18 @@
   "name": "repit",
   "repo": "bredele/repit",
   "description": "",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "keywords": [],
   "dependencies": {
     "bredele/cement": "*",
     "bredele/datastore": "*",
-    "component/indexof" : "*",
-    "bredele/looping" : "*"
+    "component/indexof": "*",
+    "bredele/looping": "*"
   },
   "development": {
     "component/assert": "*",
     "bredele/brickjs": "*",
-    "bredele/wall" : "*"
+    "bredele/wall": "*"
   },
   "license": "MIT",
   "main": "index.js",

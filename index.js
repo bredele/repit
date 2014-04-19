@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var binding = require('cement');
+var cement = require('cement');
 var Store = require('datastore');
 var each = require('looping');
 var index = require('indexof');
@@ -16,13 +16,23 @@ var index = require('indexof');
 
 module.exports = function(data) {
 
+  if(data && data.mount) {
+
+    // note: do better
+    data.repeat = function(node, data) {
+      var list = new Repit(new Store(data) || data.sandbox);
+      list.list(node);
+    };
+  }
+
+  // brick plugin 
   return function(ctx) {
     var list = new Repit(data || ctx);
     ctx.add('repeat', function(node) {
       // :s
       list.list(node);
     });
-
+    return list;
   };
 
 };
@@ -79,6 +89,7 @@ Repit.prototype.list = function(node) {
 
   this.store.loop(this.addItem, this);
 };
+
 
 /**
  * Return index of node in list.
@@ -204,8 +215,7 @@ function ItemRenderer(node, data){
   //NOTE: is it more perfomant to work with string?
   this.dom = node.cloneNode(true);
   this.store = new Store(data);
-  this.binding = binding(this.store); //we have to have a boolean parameter to apply interpolation &|| plugins
-  this.binding.scan(this.dom);
+  cement(this.store).scan(this.dom);
 }
 
 

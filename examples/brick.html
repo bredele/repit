@@ -3,9 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Repit brick</title>
+	<style>
+	  .each li {
+	  	display:inline-block;
+	  }
+	</style>
 </head>
 <body>
 	<ul class="list" repeat>
+		<li> {{ label }} </li>
+	</ul>
+	<ul class="each" each>
 		<li> {{ label }} </li>
 	</ul>
 	<script src="../build/build.js"></script>
@@ -18,21 +26,33 @@
 	  	label: 'github'
 	  }];
 
-	  var view = brick('.list', data)
-	    .use(repeat())
-	    .build();
+	  // var view = brick('.list', data)
+	  //   .use(repeat())
+	  //   .build();
 
-	  var index = 2;
-	  setInterval(function() {
-	  	view.set(index++, {
-	  		label: 'buddy' + index
-	  	});
 
-	  	if(index === 50) {
-	  		view.reset([]);
-	  		index = 0;
-	  	}
-	  }, 10);
+	  // si je passe pas data il y a [undefined x 2] qui cause une
+	  // erreur a unbind
+	  var each = brick('.each', data)
+	   .use(repeat('each'))
+	   .build();
+
+	   var index = 2;
+	   setInterval(function() {
+	   	var item = {
+	   		label: 'buddy' + index
+	   	}
+	   	//view.set(index, item);
+	   	each.set(index, item);
+
+	   	index++;
+	   	if(index === 30) {
+	   		//view.reset([]);
+	   		each.reset([]);
+	   		index = 0;
+	   	}
+	   }, 10);
+
 
 	</script>
 </body>

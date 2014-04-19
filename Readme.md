@@ -42,8 +42,8 @@ var data = new Store([{
 ]);
 
 
-var items = new Repeat(data);
-items.list(ul);
+var list = new Repeat(data);
+list.scan(ul);
 
 ```
 

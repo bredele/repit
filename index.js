@@ -24,24 +24,33 @@ module.exports = Repit;
  * @api public
  */
 
-function Repit(data){
+function Repit(data, other){
   //NOTE: there is some cleaning to do
   if(!(this instanceof Repit)) {
-    if(data && data.mount) {
+
+    if(data && data.sandbox) {
 
       // note: do better
       data.repeat = function(node, data) {
         var list = new Repit(new Store(data) || data.sandbox);
-        list.list(node);
+        list.scan(node);
       };
+      return;
     }
 
     // brick plugin 
     return function(ctx) {
+      var name = 'repeat';
+      //NOTE: do module to switch arguments
+      if(typeof data === 'string') {
+        name = data;
+        data = other;
+      }
+
       var list = new Repit(data || ctx);
-      ctx.add('repeat', function(node) {
+      ctx.add(name, function(node) {
         // :s
-        list.list(node);
+        list.scan(node);
       });
       return list;
     };
@@ -61,7 +70,7 @@ function Repit(data){
  * @api public
  */
 
-Repit.prototype.list = function(node) {
+Repit.prototype.scan = function(node) {
   var first = node.children[0];
   var _this = this;
 

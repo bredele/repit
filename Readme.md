@@ -24,9 +24,9 @@ with [browserify](http://browserify.org):
 
 HTML:
 ```html
-  <ul>
-    <li>{{ label }}</li>
-  </ul>
+<ul>
+  <li>{{ label }}</li>
+</ul>
 ```
 
 JavaScript:
@@ -34,28 +34,25 @@ JavaScript:
 var Store = require('datastore');
 var Repeat = require('repit');
 
-var data = [{
+var data = new Store([{
   label: 'bredele'
 }, {
   label: 'Calgary'
 }
-];
+]);
+
 
 var items = new Repeat(data);
 items.list(ul);
-items.add({
-  label: 'Canada'
-})
 
 ```
 
 Result:
 ```html
-  <ul>
-    <li>bredele</li>
-    <li>Calgary</li>
-    <li>Canada</li>   
-  </ul>
+<ul>
+  <li>bredele</li>
+  <li>Calgary</li> 
+</ul>
 ```
 
 See [example](https://github.com/bredele/repeat-brick/tree/master/examples/standalone.html).
@@ -64,9 +61,9 @@ See [example](https://github.com/bredele/repeat-brick/tree/master/examples/stand
 
 Directive:
 ```html
-  <ul repeat>
-    <li>{{ label }}</li>
-  </ul>
+<ul repeat>
+  <li>{{ label }}</li>
+</ul>
 ```
 
 Brick:

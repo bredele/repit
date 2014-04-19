@@ -1,19 +1,19 @@
 {
-  "name": "repeat-brick",
-  "repo": "bredele/repeat-brick",
+  "name": "repit",
+  "repo": "bredele/repit",
   "description": "",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "keywords": [],
   "dependencies": {
-    "bredele/binding": "*",
-    "bredele/store": "*",
+    "bredele/cement": "*",
+    "bredele/datastore": "*",
     "component/indexof" : "*",
-    "bredele/each" : "*"
+    "bredele/looping" : "*"
   },
   "development": {
     "component/assert": "*",
-    "bredele/brick": "*",
-    "bredele/events-brick" : "*"
+    "bredele/brickjs": "*",
+    "bredele/wall" : "*"
   },
   "license": "MIT",
   "main": "index.js",

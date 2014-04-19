@@ -1,14 +1,14 @@
 {
-  "name": "repeat-brick",
-  "version": "0.0.1",
-  "description": "Brick plugin to Instantiate a DOM element once per item into a Store ",
+  "name": "repit",
+  "version": "0.1.0",
+  "description": "Repeat a DOM element once per item into a datastore ",
   "main": "index.js",
   "directories": {
     "example": "examples",
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --report nyan"
   },
   "repository": {
     "type": "git",
@@ -19,22 +19,23 @@
     "each",
     "plugin",
     "brick",
-    "store"
+    "store",
+    "wall"
   ],
   "author": "Olivier Wietrich <olivier.wietrich@gmail.com> (http://github.com/bredele)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bredele/repeat-brick/issues"
   },
-  "browser": {
-    "store": "store-component",
-    "binding": "data-binding",
-    "each": "each-bredele"
-  },
   "dependencies": {
-    "store-component": "~0.1.2",
-    "each-bredele": "0.0.1",
     "indexof": "0.0.1",
-    "data-binding": "0.0.0"
+    "looping": "^1.0.0",
+    "datastore": "^1.0.2",
+    "cement": "^0.3.2"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "wall": "^0.1.0",
+    "brickjs": "^0.3.3"
   }
 }

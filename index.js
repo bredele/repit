@@ -1,27 +1,43 @@
-var binding = require('binding'),
-    Store = require('store'),
-    each = require('each'),
-    index = require('indexof');
-
-
 
 /**
- * Expose 'List'
+ * Module dependencies.
  */
 
-module.exports = List;
+var binding = require('cement');
+var Store = require('datastore');
+var each = require('looping');
+var index = require('indexof');
+
 
 
 /**
- * List constructor.
+ * Expose 'Repit'
+ */
+
+module.exports = function(data) {
+
+  return function(ctx) {
+    var list = new Repit(data || ctx);
+    ctx.add('repeat', function(node) {
+      // :s
+      list.list(node);
+    });
+
+  };
+
+};
+
+
+/**
+ * Repit constructor.
  * 
  * @param {HTMLelement} el
  * @param {Object} model
  * @api public
  */
 
-function List(store){
-  if(!(this instanceof List)) return new List(store);
+function Repit(store){
+  if(!(this instanceof Repit)) return new Repit(store);
   //TODO: should mixin store
   // this.store = new Store(store);
   this.store = store;
@@ -37,10 +53,9 @@ function List(store){
  * @api public
  */
 
-List.prototype.main =  
-List.prototype.list = function(node) {
-  var first = node.children[0],
-      _this = this;
+Repit.prototype.list = function(node) {
+  var first = node.children[0];
+  var _this = this;
 
   this.node = node;
   this.clone = first.cloneNode(true);
@@ -72,7 +87,7 @@ List.prototype.list = function(node) {
  * @api public
  */
 
-List.prototype.indexOf = function(node) {
+Repit.prototype.indexOf = function(node) {
   return index(this.node.children, node);
 };
 
@@ -86,7 +101,7 @@ List.prototype.indexOf = function(node) {
  * @api public
  */
 
-List.prototype.loop = function(cb, scope) {
+Repit.prototype.loop = function(cb, scope) {
   each(this.items, function(idx, item){
     cb.call(scope, item.store);
   });
@@ -100,7 +115,7 @@ List.prototype.loop = function(cb, scope) {
  * @api public
  */
 
-List.prototype.add = function(obj) {
+Repit.prototype.add = function(obj) {
   //store push?
   //in the future, we could use a position
   this.store.set(this.store.data.length, obj);
@@ -115,7 +130,7 @@ List.prototype.add = function(obj) {
  * @api public
  */
 
-List.prototype.set = function(idx, obj) {
+Repit.prototype.set = function(idx, obj) {
   if(idx instanceof Element) idx = this.indexOf(idx);  
   // if(idx instanceof HTMLElement) idx = this.indexOf(idx);
   var item = this.items[idx].store;
@@ -131,7 +146,7 @@ List.prototype.set = function(idx, obj) {
  * @api public
  */
 
-List.prototype.del = function(arg, scope) {
+Repit.prototype.del = function(arg, scope) {
   //we should optimize store reset
   if(arg === undefined) return this.store.reset([]);
   if(typeof arg === 'function') {
@@ -156,7 +171,7 @@ List.prototype.del = function(arg, scope) {
  * @api private
  */
 
-List.prototype.addItem = function(key, data) {
+Repit.prototype.addItem = function(key, data) {
   var item = new ItemRenderer(this.clone, data);
   this.items[key] = item;
   this.node.appendChild(item.dom);
@@ -169,7 +184,7 @@ List.prototype.addItem = function(key, data) {
  * @api private
  */
 
-List.prototype.delItem = function(idx) {
+Repit.prototype.delItem = function(idx) {
     var item = this.items[idx];
     item.unbind(this.node);
     this.items.splice(idx, 1);

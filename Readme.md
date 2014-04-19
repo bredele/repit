@@ -1,6 +1,6 @@
 # Repit
 
- > **rep**eat **it**
+ > repeat it
  
   Loop over the items of an array store and append bound instances of that element.
 

@@ -1,6 +1,6 @@
 {
   "name": "repit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Repeat a DOM element once per item into a datastore ",
   "main": "index.js",
   "directories": {

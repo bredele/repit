@@ -2,7 +2,7 @@
   "name": "repit",
   "repo": "bredele/repit",
   "description": "",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": [],
   "dependencies": {
     "bredele/cement": "*",
